@@ -134,16 +134,21 @@ body {
 	line-height: 90px;
 	vertical-align: top;
 	margin-bottom: 15px;
+	text-align: left;
+	width: 360px;
 	/* letter-spacing: 4px; */
 }
 
 .dt-date {
 	margin-bottom: 15px;
+	text-align: center;
+	width: 360px;
 }
 
 .weatherSunRiseSet {
-	text-align: left;
+	text-align: center;
 	font-size: 30px;
+	width: 360px;
 }
 
 .weatherHead {
