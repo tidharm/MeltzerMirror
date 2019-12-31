@@ -294,3 +294,7 @@ body {
   border-spacing: 0;
   border-collapse: separate;
 }
+
+.language-option {
+  cursor: pointer;
+}

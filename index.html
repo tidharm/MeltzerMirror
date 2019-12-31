@@ -6,25 +6,35 @@
 	<meta name="google" content="notranslate" />
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 
-	<meta name="apple-mobile-web-app-capable" content="yes">
-	<meta name="apple-mobile-web-app-status-bar-style" content="black">
-	<meta name="format-detection" content="telephone=no">
-	<meta name="mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-capable" content="yes"/>
+	<meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+	<meta name="format-detection" content="telephone=no"/>
+	<meta name="mobile-web-app-capable" content="yes"/>
 
-	<link rel="icon" href="data:;base64,iVBORw0KGgo=">
-	<link rel="stylesheet" type="text/css" href="css/main.css">
-	<link rel="stylesheet" type="text/css" href="fonts/helvetica-neue-5-cufonfonts-webfont/style.css">
+	<link rel="icon" href="data:;base64,iVBORw0KGgo="/>
+	<link rel="stylesheet" type="text/css" href="css/main.css"/>
+	<link rel="stylesheet" type="text/css" href="fonts/helvetica-neue-5-cufonfonts-webfont/style.css"/>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.3/css/flag-icon.css"/>
 
 	<script type="text/javascript">
 		var version = "#VERSION#";
 	</script>
+	<script type="text/javascript">
+		function setLanguage(langDiv){
+			var divId = langDiv.id;
+			var lang = divId.substr(divId.length - 2);
+			localStorage.setItem("localization",lang);
+			location.reload(true); //forceGet
+			//location.reload();
+		}
+	</script>
 	
 </head>
-<body>
+<body id="body">
 	<!-- Metadata -->
 	<div id="metadata" style="display: none;">
 		<div id="service-availability" style="color: red; display: none;">Location Service Unavailable</div>
-		<div id="localization" style="display: none;">en</div>
+		<div id="localization" style="display: none;"></div>
 	</div>
 	
 	<!-- Page Layout -->
@@ -33,8 +43,21 @@
 			
 		</div>
 	</div>
+
+	<div id="language-selection" style="display: none;">
+		<span>Select Language:</span>
+		<div class="language-option" id="lang-option-en" onclick="setLanguage(this);">
+			<span class="flag-icon flag-icon-us"></span>
+			<span>English</span>
+		</div>
+		<div class="language-option" id="lang-option-he" onclick="setLanguage(this);">
+			<span class="flag-icon flag-icon-il"></span>
+			<span>עברית</span>
+		</div>
+	</div>
 	
-	<div class="region top bar">
+	<div id="regions">
+		<div class="region top bar">
 <!--
 ########
 #OO    #
@@ -43,103 +66,103 @@
 #      #
 ########
 -->
-		<div class="region top left">
-			<div class="container">
-				<div class="dt-time" id="time"></div>
-				<div class="dt-date" id="date"></div>
-				<div class="weatherSunRiseSet">
-					<img id="sunriseIcon" src="images/50px/sunrise.png" alt="" height="40" width="40">
-					<span id="sunriseTime"></span>
-					<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-					<img id="sunsetIcon" src="images/50px/sunset.png" alt="" height="40" width="40">
-					<span id="sunsetTime"></span>
+			<div class="region top left">
+				<div class="container">
+					<div class="dt-time" id="time"></div>
+					<div class="dt-date" id="date"></div>
+					<div class="weatherSunRiseSet">
+						<img id="sunriseIcon" src="images/50px/sunrise.png" alt="" height="40" width="40">
+						<span id="sunriseTime"></span>
+						<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+						<img id="sunsetIcon" src="images/50px/sunset.png" alt="" height="40" width="40">
+						<span id="sunsetTime"></span>
+					</div>
+				</div>
+			</div>
+<!--
+########
+#  OO  #
+#  OO  #
+#      #
+#      #
+########
+-->
+			<div class="region top center">
+				<div class="container"></div>
+			</div>
+<!--
+########
+#    OO#
+#    OO#
+#      #
+#      #
+########
+-->
+			<div class="region top right">
+				<div class="container">
+					<div id="weatherCurrent">
+						<div class="weatherText"><span id="weatherCity"></span></div>
+						<div class="weatherHead"><img id="weatherIcon" src="" alt=""><span>&nbsp;&nbsp;</span><span id="weatherTemp"></span></div>
+						<div class="weatherText"><span id="weatherDescription"></span></div>
+						
+					</div>
+					<div id="weatherForecast">
+						<table class="fc-table" id="fc-table">
+							<!-- <tr id="fc-row-day0"> -->
+								<!-- <td class="fc-wday" id="fc-wday0"></td> -->
+								<!-- <td class="fc-icon"><img id="fc-icon0" src="" alt=""></td> -->
+								<!-- <td class="fc-mntp" id="fc-mntp0"></td> -->
+								<!-- <td class="fc-mxtp" id="fc-mxtp0"></td> -->
+							<!-- </tr> -->
+							<!-- <tr id="fc-row-day1"> -->
+								<!-- <td class="fc-wday" id="fc-wday1"></td> -->
+								<!-- <td class="fc-icon"><img id="fc-icon1" src="" alt=""></td> -->
+								<!-- <td class="fc-mntp" id="fc-mntp1"></td> -->
+								<!-- <td class="fc-mxtp" id="fc-mxtp1"></td> -->
+							<!-- </tr> -->
+							<!-- <tr id="fc-row-day2"> -->
+								<!-- <td class="fc-wday" id="fc-wday2"></td> -->
+								<!-- <td class="fc-icon"><img id="fc-icon2" src="" alt=""></td> -->
+								<!-- <td class="fc-mntp" id="fc-mntp2"></td> -->
+								<!-- <td class="fc-mxtp" id="fc-mxtp2"></td> -->
+							<!-- </tr> -->
+							<!-- <tr id="fc-row-day3"> -->
+								<!-- <td class="fc-wday" id="fc-wday3"></td> -->
+								<!-- <td class="fc-icon"><img id="fc-icon3" src="" alt=""></td> -->
+								<!-- <td class="fc-mntp" id="fc-mntp3"></td> -->
+								<!-- <td class="fc-mxtp" id="fc-mxtp3"></td> -->
+							<!-- </tr> -->
+							<!-- <tr id="fc-row-day4"> -->
+								<!-- <td class="fc-wday" id="fc-wday4"></td> -->
+								<!-- <td class="fc-icon"><img id="fc-icon4" src="" alt=""></td> -->
+								<!-- <td class="fc-mntp" id="fc-mntp4"></td> -->
+								<!-- <td class="fc-mxtp" id="fc-mxtp4"></td> -->
+							<!-- </tr> -->
+							<!-- <tr id="fc-row-day5"> -->
+								<!-- <td class="fc-wday" id="fc-wday5"></td> -->
+								<!-- <td class="fc-icon"><img id="fc-icon5" src="" alt=""></td> -->
+								<!-- <td class="fc-mntp" id="fc-mntp5"></td> -->
+								<!-- <td class="fc-mxtp" id="fc-mxtp5"></td> -->
+							<!-- </tr> -->
+						</table>
+					</div>
 				</div>
 			</div>
 		</div>
-<!--
-########
-#  OO  #
-#  OO  #
-#      #
-#      #
-########
--->
-		<div class="region top center">
+		
+		<div class="region upper third">
 			<div class="container"></div>
 		</div>
-<!--
-########
-#    OO#
-#    OO#
-#      #
-#      #
-########
--->
-		<div class="region top right">
-			<div class="container">
-				<div id="weatherCurrent">
-					<div class="weatherText"><span id="weatherCity"></span></div>
-					<div class="weatherHead"><img id="weatherIcon" src="" alt=""><span>&nbsp;&nbsp;</span><span id="weatherTemp"></span></div>
-					<div class="weatherText"><span id="weatherDescription"></span></div>
-					
-				</div>
-				<div id="weatherForecast">
-					<table class="fc-table" id="fc-table">
-						<!-- <tr id="fc-row-day0"> -->
-							<!-- <td class="fc-wday" id="fc-wday0"></td> -->
-							<!-- <td class="fc-icon"><img id="fc-icon0" src="" alt=""></td> -->
-							<!-- <td class="fc-mntp" id="fc-mntp0"></td> -->
-							<!-- <td class="fc-mxtp" id="fc-mxtp0"></td> -->
-						<!-- </tr> -->
-						<!-- <tr id="fc-row-day1"> -->
-							<!-- <td class="fc-wday" id="fc-wday1"></td> -->
-							<!-- <td class="fc-icon"><img id="fc-icon1" src="" alt=""></td> -->
-							<!-- <td class="fc-mntp" id="fc-mntp1"></td> -->
-							<!-- <td class="fc-mxtp" id="fc-mxtp1"></td> -->
-						<!-- </tr> -->
-						<!-- <tr id="fc-row-day2"> -->
-							<!-- <td class="fc-wday" id="fc-wday2"></td> -->
-							<!-- <td class="fc-icon"><img id="fc-icon2" src="" alt=""></td> -->
-							<!-- <td class="fc-mntp" id="fc-mntp2"></td> -->
-							<!-- <td class="fc-mxtp" id="fc-mxtp2"></td> -->
-						<!-- </tr> -->
-						<!-- <tr id="fc-row-day3"> -->
-							<!-- <td class="fc-wday" id="fc-wday3"></td> -->
-							<!-- <td class="fc-icon"><img id="fc-icon3" src="" alt=""></td> -->
-							<!-- <td class="fc-mntp" id="fc-mntp3"></td> -->
-							<!-- <td class="fc-mxtp" id="fc-mxtp3"></td> -->
-						<!-- </tr> -->
-						<!-- <tr id="fc-row-day4"> -->
-							<!-- <td class="fc-wday" id="fc-wday4"></td> -->
-							<!-- <td class="fc-icon"><img id="fc-icon4" src="" alt=""></td> -->
-							<!-- <td class="fc-mntp" id="fc-mntp4"></td> -->
-							<!-- <td class="fc-mxtp" id="fc-mxtp4"></td> -->
-						<!-- </tr> -->
-						<!-- <tr id="fc-row-day5"> -->
-							<!-- <td class="fc-wday" id="fc-wday5"></td> -->
-							<!-- <td class="fc-icon"><img id="fc-icon5" src="" alt=""></td> -->
-							<!-- <td class="fc-mntp" id="fc-mntp5"></td> -->
-							<!-- <td class="fc-mxtp" id="fc-mxtp5"></td> -->
-						<!-- </tr> -->
-					</table>
-				</div>
-			</div>
+		
+		<div class="region middle center">
+			<div class="container"></div>
 		</div>
-	</div>
-	
-	<div class="region upper third">
-		<div class="container"></div>
-	</div>
-	
-	<div class="region middle center">
-		<div class="container"></div>
-	</div>
-	
-	<div class="region lower third">
-		<div class="container"><br/></div>
-	</div>
-	
-	<div class="region bottom bar">
+		
+		<div class="region lower third">
+			<div class="container"><br/></div>
+		</div>
+		
+		<div class="region bottom bar">
 <!--
 ########
 #      #
@@ -148,13 +171,13 @@
 #OO    #
 ########
 -->
-		<div class="region bottom left">
-			<div class="container">
-				<div id="bottom-left-text">
-					<span id="compliment"></span>
+			<div class="region bottom left">
+				<div class="container">
+					<div id="bottom-left-text">
+						<span id="compliment"></span>
+					</div>
 				</div>
 			</div>
-		</div>
 
 <!--
 ########
@@ -164,9 +187,9 @@
 #  OO  #
 ########
 -->
-		<div class="region bottom center">
-			<div class="container"></div>
-		</div>
+			<div class="region bottom center">
+				<div class="container"></div>
+			</div>
 
 <!--
 ########
@@ -176,8 +199,9 @@
 #    OO#
 ########
 -->
-		<div class="region bottom right">
-			<div class="container"></div>
+			<div class="region bottom right">
+				<div class="container"></div>
+			</div>
 		</div>
 	</div>
 	
